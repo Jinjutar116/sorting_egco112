@@ -1,24 +1,31 @@
-//
-//  main.c
-//  First arg
-//
-//  Created by Mingmanas Sivaraksa on 2/1/2567 BE.
-//
-
 #include <stdio.h>
+#include <stdlib.h>
+#include "sorting.h"
 
 int main(int argc, char * argv[]) {
-    
-  //  printf("I have %d arguments\n",argc);
-  printf("argc is %d\n",argc);
-    int i,N;
-    for(i=1;i<argc;i++){
-        //printf("arg %d: %s\n",i,argv[i]);
-         printf("%s\n",argv[i]);
+    int i,N = argc - 2;
+    int *a;
+    a = (int*)malloc(sizeof(int)*(argc-2));
 
-    
-         
+    for(i=2;i<argc;i++){
+        a[i-2] = atoi(argv[i]); 
     }
-    
+    //printf("\n");
+
+    if(argv[1][0] == 'b'){
+      bubbleSort(a,N);
+    }
+
+    if(argv[1][0] == 'i'){
+      insertion(a,N);
+      printf("\n");
+    }
+
+    if(argv[1][0] == 's'){
+      selectionSort(a,N);
+      printf("\n");
+    }
+
     return 0;
 }
+
